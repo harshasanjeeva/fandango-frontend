@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {actionlogin} from '../actions/loginactions';
-import { Row, Col, Input} from 'reactstrap';
+import { Row, Col, Input, Alert} from 'reactstrap';
 import {Card} from 'reactstrap';
 import {connect} from 'react-redux';
 import history from "./History";
@@ -61,6 +61,7 @@ class Login extends Component {
                     <form>
                         <div >
                         <h1 style={{color:"white"}}>FANDANGO-VIP </h1>
+                            {  this.props.login_status ?   <Alert color="success"> Login successfull </Alert>:'' }
                             <h2 style={{color:"orange"}}>Login</h2>
                         </div>
                         <p style={{paddingLeft:10,float:"left" ,color:"white"}}>Email </p>

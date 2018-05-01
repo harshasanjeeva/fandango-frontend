@@ -636,6 +636,81 @@ export const moviesanalytics = (payload) =>
         });
 
 
+export const clicksanalytics = (payload) =>
+    fetch(`${api}/operations/pageclicks`, {
+
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+
+
+            console.log(response.UserName+" "+response.email);
+
+
+            console.log(payload);
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+export const clickmovies = (payload) =>
+    fetch(`${api}/operations/movieclicks`, {
+
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+
+
+            console.log(response.UserName+" "+response.email);
+
+
+            console.log(payload);
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+export const billinfo = (payload) =>
+    fetch(`${api}/operations/billdetails`, {
+
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+
+
+            console.log(response.UserName+" "+response.email);
+
+
+            console.log(payload);
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
 
 
 

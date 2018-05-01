@@ -49,6 +49,15 @@ class Navbarmain extends Component {
        
 
         </NavbarBrand>
+
+
+            {/*<NavItem>*/}
+                {/*<NavLink href="/realticket">Bill details</NavLink>*/}
+            {/*</NavItem>*/}
+
+
+
+
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -68,6 +77,7 @@ class Navbarmain extends Component {
 
 
                 <NavItem>
+                    <NavLink href="/bills">Bill details</NavLink>
                 <NavLink href="/">Sign Out</NavLink>
                 </NavItem>
 

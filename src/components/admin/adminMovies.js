@@ -274,13 +274,15 @@ class adminMovies extends Component {
                                     />
                                 </div>
 
+
+
                                 <div>
-                                    <span style={{color:"white", float:"left"}}>Photos:</span>
+                                    <span style={{color:"white", float:"left"}}>Movie Image Link:</span>
                                     <Input
 
-                                        type="file"
-                                        id="photos"
-                                        placeholder="Add Photos"
+                                        type="text"
+                                        id="rating"
+                                        placeholder="Enter Image Link"
                                         value={this.state.photos}
                                         onChange={(event) => {
                                             this.setState({

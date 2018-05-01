@@ -37,6 +37,7 @@ import BookTicket from "./BookTicket";
 import Admindash from "./Admindash";
 
 import viewUsers from "./admin/viewUsers"
+import Billinfo from "./admin/Billinfo"
 
 
 class Routes extends Component {
@@ -83,6 +84,7 @@ class Routes extends Component {
                     <Route  path='/addUser' component={addUser}/>
                     <Route  path='/viewUsers' component={viewUsers}/>
                     <Route  path='/adminMainPage' component={adminMainPage}/>
+                    <Route  path='/bills' component={Billinfo}/>
 
 
                 </Switch>

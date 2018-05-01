@@ -9,6 +9,8 @@ import Navbarheader from './admin/Navbarmain';
 import {Link} from 'react-router-dom';
 import Footer from './Footer'
 import {Row,Col} from 'reactstrap'
+import {actiongetmovies, actionmovies} from "../actions/loginactions";
+import {connect} from "react-redux";
 Charts(FusionCharts);
 
 
@@ -67,36 +69,59 @@ var LineChart = require("react-chartjs").Line;
 var BarChart = require("react-chartjs").Bar;
 var DoughnutChart = require("react-chartjs").Doughnut;
 
-var incomingdatalabel = ["Movies Page", "Movies details page", "Number of Tickets ", "Payments", "Tickets", "Profile", "Reviews"];
+var incomingdatalabel = ["Movies Page", "Movies details", "Number of Tickets", "Payments", "Tickets", "Profile", "Reviews"];
 var incommingclicksnum = [65, 59, 80, 81, 56, 55,4]
-var user1 = [65, 59, 80, 81, 56, 55, 40]
-var user2 = [28, 48, 40, 19, 86, 27, 90]
-var user3 =  [18, 42, 30, 29, 16, 53, 30]
-var user4 = [12,32, 43, 32, 65, 34, 23]
 
-var movieRatinglabel = ["Avengers", "abd", "asdasd ", "asdasd", "asdasd", "asdasd", "sfg"]
+var user1 = [this.props.Movies_clicks[0], this.props.Movies_details_clicks[0],this.props.Nooftickets_clicks[0],this.props.Payments_clicks[0], this.props.Payments_clicks[0], this.props.Tickets_clicks[0], this.props.Tickets_clicks[0], this.props.Profile_users[0],this.props.Profile_clicks[0],this.props.Reviews_users[0],this.props.Reviews_clicks[0]]
+      var user2 = [this.props.Movies_clicks[1], this.props.Movies_details_clicks[1],this.props.Nooftickets_clicks[1],this.props.Payments_clicks[1], this.props.Payments_clicks[1], this.props.Tickets_clicks[0], this.props.Tickets_clicks[1], this.props.Profile_users[1],this.props.Profile_clicks[1],this.props.Reviews_users[1],this.props.Reviews_clicks[1]]
+      var user3 = [this.props.Movies_clicks[2], this.props.Movies_details_clicks[2],this.props.Nooftickets_clicks[2],this.props.Payments_clicks[2], this.props.Payments_clicks[2], this.props.Tickets_clicks[2], this.props.Tickets_clicks[2], this.props.Profile_users[2],this.props.Profile_clicks[2],this.props.Reviews_users[2],this.props.Reviews_clicks[2]]
+     var user4 = [this.props.Movies_clicks[3], this.props.Movies_details_clicks[3],this.props.Nooftickets_clicks[3],this.props.Payments_clicks[3], this.props.Payments_clicks[3], this.props.Tickets_clicks[3], this.props.Tickets_clicks[3], this.props.Profile_users[3],this.props.Profile_clicks[3],this.props.Reviews_users[3],this.props.Reviews_clicks[3]]
+
+var movieRatinglabel = ["Avengers", "Kings", "Avengers", "I Feel Pretty", "Disobedience", "Starwars", "Avatar"]
 var movieRatingdata= [6.5, 5.9, 8.0, 8.1, 5.6, 5.5,9]
 
 
 var data = [
 	{
-		value: 300,
+		value: this.props.clicks_list[0],
 		color:"#F7464A",
 		highlight: "#FF5A5E",
-		label: "Red"
-	},
+		//label: this.props.clicks_list[0]
+        label:this.props.movies_list[0]
+    },
 	{
-		value: 50,
+		value: this.props.clicks_list[1],
 		color: "#46BFBD",
 		highlight: "#5AD3D1",
-		label: "Green"
+		label: this.props.movies_list[1],
 	},
 	{
-		value: 100,
+		value: this.props.clicks_list[2],
 		color: "#FDB45C",
 		highlight: "#FFC870",
-		label: "Yellow"
-	}
+		label: this.props.movies_list[2]
+	},
+
+    {
+        value: this.props.clicks_list[3],
+        color: "#808000",
+        highlight: "#808000",
+        label: this.props.movies_list[3]
+    },
+
+    {
+        value: this.props.clicks_list[4],
+        color: "#008080",
+        highlight: "#008080",
+        label: this.props.movies_list[4]
+    },
+
+    {
+        value: this.props.clicks_list[5],
+        color: "#00FF00",
+        highlight: "#00FF00",
+        label: this.props.movies_list[5]
+    }
 ]
 
     var chartDatas= {
@@ -223,7 +248,7 @@ var Polar = [
        <Row>
 <Col>
       
-       <h5 style={{color:"silver"}}>UNKNOWN</h5>
+       <h5 style={{color:"silver"}}>Hall Revenue</h5>
        <PolarAreaChart data={Polar}  width="300" height="200"/>
 
        </Col>
@@ -237,7 +262,7 @@ var Polar = [
 
        <Col>
       
-       <h5 style={{color:"silver"}}>UNKNOWN</h5>
+       <h5 style={{color:"silver"}}>Movie Clicks Graph</h5>
        <DoughnutChart data={data}  width="300" height="200"/>
        </Col>
 
@@ -251,11 +276,12 @@ var Polar = [
        <Col>
        <h4 style={{color:"silver"}}>Total clicks per Component</h4>
        <BarChart data={chartDatas} width="700" height="250" style={{float:"left"}}/>
+        <strong><h4 style={{color:"Red"}}>Reviews is the less seen area</h4></strong>
       
        </Col>
 
        <Col>
-       <h4 style={{color:"silver",float:"left"}}>Top 3 Users comparision</h4>
+       <h4 style={{color:"silver",float:"left"}}>Trace diagram for tracking users:</h4>
        <LineChart data={chartData} width="700" height="250"/>
        </Col>
 
@@ -278,7 +304,59 @@ var Polar = [
   }
 }
 
+const mapDispatchToProps =(dispatch)=> {
+    return {
+        log : (data) => dispatch(actionmovies(data)),
+        getmovies : (data) => dispatch(actiongetmovies(data)),
+
+    };
+}
+
+
+function mapStateToProps(state) {
+    console.log(state);
+
+    console.log("Movies_users in adminanalytics:",state.user.graph3.Movies_users);
+    console.log("Movies_clicks in admindash:",state.user.graph3.Movies_clicks);
+    console.log("Movies_details_users in admindash:",state.user.graph3.Movies_details_users);
+    console.log("Movies_details_clicks in admindash:",state.user.graph3.Movies_details_clicks);
+    console.log("Nooftickets_users in adminanalytics:",state.user.graph3.Nooftickets_users);
+    console.log("Nooftickets_clicks in admindash:",state.user.graph3.Nooftickets_clicks);
+    console.log("Payments_users in admindash:",state.user.graph3.Payments_users);
+    console.log("Payments_clicks in admindash:",state.user.graph3.Payments_clicks);
+    console.log("Tickets_users in admindash:",state.user.graph3.Tickets_users);
+    console.log("Tickets_clicks in adminanalytics:",state.user.graph3.Tickets_clicks);
+    console.log("Profile_users in admindash:",state.user.graph3.Profile_users);
+    console.log("Profile_clicks in admindash:",state.user.graph3.Profile_clicks);
+    console.log("Reviews_users in admindash:",state.user.graph3.Reviews_users);
+    console.log("Reviews_clicks in admindash:",state.user.graph3.Reviews_clicks);
+    console.log("movies_list in admindash:",state.user.graph4.movies_list);
+    console.log("clicks_list in admindash:",state.user.graph4.clicks_list);
+
+    return {
+        Movies_users:state.user.graph3.Movies_users,
+        Movies_clicks:state.user.graph3.Movies_clicks,
+        Movies_details_users:state.user.graph3.Movies_details_users,
+        Movies_details_clicks:state.user.graph3.Movies_details_clicks,
+        Nooftickets_users:state.user.graph3.Nooftickets_users,
+        Nooftickets_clicks:state.user.graph3.Nooftickets_clicks,
+        Payments_users:state.user.graph3.Payments_users,
+        Payments_clicks:state.user.graph3.Payments_clicks,
+        Tickets_users:state.user.graph3.Tickets_users,
+        Tickets_clicks:state.user.graph3.Tickets_clicks,
+        Profile_users:state.user.graph3.Profile_users,
+        Profile_clicks:state.user.graph3.Profile_clicks,
+        Reviews_users:state.user.graph3.Reviews_users,
+        Reviews_clicks:state.user.graph3.Reviews_clicks,
+        movies_list:state.user.graph4.movies_list,
+        clicks_list:state.user.graph4.clicks_list,
 
 
 
-export default withRouter(Adminanalytics);
+    };
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Adminanalytics);
+
+

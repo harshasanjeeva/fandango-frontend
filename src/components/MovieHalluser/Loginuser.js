@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {actionmovieuserlogin} from '../../actions/loginactions';
-import { Row, Col, Input} from 'reactstrap';
+import { Row, Col, Input, Alert} from 'reactstrap';
 import {Card} from 'reactstrap';
 import {connect} from 'react-redux';
 import history from "../History";
@@ -55,6 +55,7 @@ class Loginuser extends Component {
         return (
             <div style={{backgroundColor:"black" ,height: "100% !important"}}>
                 <Navbarmain />
+
                 <Row>
                     <Col> </Col>
                     <Col>
@@ -71,6 +72,7 @@ class Loginuser extends Component {
                                     <form>
                                         <div >
                                             <h1 style={{color:"white"}}>FANDANGO </h1>
+                                            {  this.props.login_status ?   <Alert color="success"> Login successfull </Alert>:'' }
                                             <h1>Login</h1>
                                         </div>
                                         <div >

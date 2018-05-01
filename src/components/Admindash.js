@@ -165,6 +165,33 @@ var data = [
             // }
         ]
     };
+
+
+      var chartData1= {
+          labels: ['sanjose','sandiego','sacramento','santaclara','santacruz','sanfrancisco'],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  fillColor: "#0077BE",
+                  strokeColor: "rgba(220,220,220,1)",
+                  pointColor: "rgba(220,220,220,1)",
+                  pointStrokeColor: "#fff",
+                  pointHighlightFill: "#fff",
+                  pointHighlightStroke: "rgba(220,220,220,1)",
+                  data: [800,400,200,300,400,500]
+              }
+              // {
+              //     label: "My Second dataset",
+              //     fillColor: "rgba(151,187,205,0.2)",
+              //     strokeColor: "rgba(151,187,205,1)",
+              //     pointColor: "rgba(151,187,205,1)",
+              //     pointStrokeColor: "#fff",
+              //     pointHighlightFill: "#fff",
+              //     pointHighlightStroke: "rgba(151,187,205,1)",
+              //     data: [28, 48, 40, 19, 86, 27, 90]
+              // }
+          ]
+      };
     return (
       <div style={{backgroundColor:"black"}}>
   
@@ -173,10 +200,10 @@ var data = [
 
 
        <Navbarheader />
-       <Row>
+
        <Col>
        <h4 style={{color:"silver",float:"left"}}>city wise revenue/year</h4>
-       <BarChart data={chartData} width="500" height="250" style={{float:"left"}}/>
+       <BarChart data={chartData1} width="500" height="250" style={{float:"left"}}/>
        </Col>
 
        <Col>
@@ -184,7 +211,7 @@ var data = [
        <LineChart data={chartData} width="600" height="250"/>
        </Col>
 
-       </Row >
+
        <h5 style={{color:"silver"}}>10 halls who sold maximum number of tickets last month with its revenue</h5>
        <DoughnutChart data={data}  width="600" height="250"/>
   

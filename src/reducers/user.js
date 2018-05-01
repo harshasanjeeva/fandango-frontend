@@ -1,7 +1,7 @@
 
 import {
     EDITMOVIEHALLDATA, LOGIN, MOVIEHALLDATA, ADDMOVIEHALLDATA, REVENUEDATA, DELETEBOOKING,
-    HALLGRAPH
+    HALLGRAPH, PAGECLICKS, MOVIECLICKS, BILLINFO
 } from '../actions/loginactions';
 import {REAL} from '../actions/loginactions';
 import {SIGNUP} from '../actions/loginactions';
@@ -418,7 +418,7 @@ const stores= (state = initialState, action) => {
             }
 
         case MOVIESGRAPH:
-            console.log("im here in hall graph store");
+            console.log("im here in movies graph store");
             console.log("movies_list data",action.data.movies_list);
             console.log("revenue_list data",action.data.revenue_list);
 
@@ -428,6 +428,63 @@ const stores= (state = initialState, action) => {
 
                     "movies_list":action.data.movies_list,
                     "revenue_list":action.data.revenue_list
+                }
+            }
+
+
+        case PAGECLICKS:
+            console.log("im here in page graph store");
+            //console.log("movies_list data",action.data.movies_list);
+            console.log("page_clicks data:",action.data);
+
+            return {
+                ...state,
+                "graph3":{
+
+                    "Movies_users":action.data.Movies_users,
+                    "Movies_clicks":action.data.Movies_clicks[0],
+                    "Movies_details_users": action.data.Movies_details_users,
+                    "Movies_details_clicks":action.data.Movies_details_clicks,
+                    "Nooftickets_users":action.data.Nooftickets_users,
+                    "Nooftickets_clicks":action.data.Nooftickets_clicks,
+                    "Payments_users":action.data.Payments_users,
+                    "Payments_clicks":action.data.Payments_clicks,
+                    "Tickets_users":action.data.Tickets_users,
+                    "Tickets_clicks":action.data.Tickets_clicks,
+                    "Profile_users":action.data.Profile_users,
+                    "Profile_clicks":action.data.Profile_clicks,
+                    "Reviews_users":action.data.Reviews_users,
+                    "Reviews_clicks":action.data.Reviews_clicks
+
+                }
+            }
+
+
+        case MOVIECLICKS:
+            console.log("im here in moviesclicks graph store");
+            console.log("movies_list data",action.data.movies_list);
+            console.log("clicks_list data",action.data.clicks_list);
+
+            return {
+                ...state,
+                "graph4":{
+
+                    "movies_list":action.data.movies_list,
+                    "clicks_list":action.data.clicks_list
+                }
+            }
+
+        case BILLINFO:
+            console.log("im here in  BILLINFO store");
+            console.log("billinfo",action.data.bill);
+
+
+            return {
+                ...state,
+                "bill":{
+
+                    "bill_info":action.data.bill,
+
                 }
             }
 

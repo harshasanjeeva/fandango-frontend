@@ -33,6 +33,10 @@ export const GETMOVIEHALLS="GETMOVIEHALLS";
 export const VIEWALLUSERS="VIEWALLUSERS";
 export const HALLGRAPH = "HALLGRAPH";
 export const MOVIESGRAPH = "MOVIESGRAPH";
+export const PAGECLICKS = "PAGECLICKS";
+export const MOVIECLICKS = "MOVIECLICKS";
+export const BILLINFO = "BILLINFO"
+
 
 
 export function actionlogin(userdata) {
@@ -984,6 +988,110 @@ export function analyticsmovies(data) {
     console.log(data);
     return {
         type: MOVIESGRAPH,
+        message: "inside  hall data",
+        data:data
+    }
+}
+
+
+export function actiongetanalyticsclicks(userdata) {
+    console.log("in get movie hall data");
+    console.log(userdata);
+    return function (dispatch) {
+        try {
+
+            API.clicksanalytics(userdata)
+                .then((response) => {
+                    try {
+                        console.log("recieved response now dispatching to action");
+                        dispatch(analyticsclicks(response));
+                    }
+                    catch (error) {
+                        console.log(error);
+                    }
+                });
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+};
+
+export function analyticsclicks(data) {
+    console.log(data);
+    return {
+        type: PAGECLICKS,
+        message: "inside  hall data",
+        data:data
+    }
+}
+
+
+
+export function actiongetmovieclicks(userdata) {
+    console.log("in get movie hall data");
+    console.log(userdata);
+    return function (dispatch) {
+        try {
+
+            API.clickmovies(userdata)
+                .then((response) => {
+                    try {
+                        console.log("recieved response now dispatching to action");
+                        dispatch(movieclicks(response));
+                    }
+                    catch (error) {
+                        console.log(error);
+                    }
+                });
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+};
+
+export function movieclicks(data) {
+    console.log(data);
+    return {
+        type: MOVIECLICKS,
+        message: "inside  hall data",
+        data:data
+    }
+}
+
+
+
+export function actiongetbilldetails(userdata) {
+    console.log("in get movie hall data");
+    console.log(userdata);
+    return function (dispatch) {
+        try {
+
+            API.billinfo(userdata)
+                .then((response) => {
+                    try {
+                        console.log("recieved response now dispatching to action");
+                        dispatch(billdetails(response));
+                    }
+                    catch (error) {
+                        console.log(error);
+                    }
+                });
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+};
+
+export function billdetails(data) {
+    console.log(data);
+    return {
+        type: BILLINFO,
         message: "inside  hall data",
         data:data
     }

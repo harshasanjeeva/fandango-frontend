@@ -4,7 +4,7 @@ import {Card} from 'reactstrap';
 import {connect} from 'react-redux';
 import history from "../History";
 import Navbarmain from '../Navbarlogout';
-import {actionAdminLogin, actiongetmovies, getMovieHalls, actiongetanalyticshalls,actiongetanalyticsmovies} from '../../actions/loginactions';
+import {actionAdminLogin, actiongetmovies, actiongetbilldetails,actiongetanalyticsclicks, actiongetmovieclicks, getMovieHalls, actiongetanalyticshalls,actiongetanalyticsmovies} from '../../actions/loginactions';
 import { withRouter } from 'react-router-dom';
 
 class adminHome extends Component {
@@ -25,6 +25,9 @@ class adminHome extends Component {
         this.props.getMovies();
         this.props.graph1();
         this.props.graph2();
+        this.props.clicks();
+        this.props.movieclicks();
+        this.props.bill();
         setTimeout(function () {
             history.push
             ({
@@ -138,7 +141,10 @@ const mapDispatchToProps =(dispatch)=> {
         getMovieHalls: () => dispatch(getMovieHalls()),
         getMovies : (data) => dispatch(actiongetmovies(data)),
         graph1 : (data) => dispatch(actiongetanalyticshalls(data)),
-        graph2 : (data) => dispatch(actiongetanalyticsmovies(data))
+        graph2 : (data) => dispatch(actiongetanalyticsmovies(data)),
+        clicks : (data) => dispatch(actiongetanalyticsclicks(data)),
+        movieclicks : (data) => dispatch(actiongetmovieclicks(data)),
+        bill : (data) => dispatch(actiongetbilldetails(data))
     };
 }
 const mapStateToProps =(state)=> {

@@ -126,7 +126,7 @@ class viewUsers extends Component {
     }}
 function mapStateToProps(state) {
     return {
-        hallUsers:state.user.viewAllUsers.viewAllUsers.userData
+        hallUsers:state.user.viewAllUsers.viewAllUsers.value
         //hallUsers:state.movieHalls
     };
 }
